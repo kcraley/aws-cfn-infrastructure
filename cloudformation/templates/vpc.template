@@ -1,0 +1,114 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "A CloudFormation template which creates a VPC.",
+    "Parameters": {
+        "Environment": {
+            "Description": "The type of environment which will be created.",
+            "Type": "String",
+            "Default": "Development",
+            "AllowedValues": [
+                "Development",
+                "Staging",
+                "Production"
+            ],
+            "ConstraintDescription": "Select an environment of Development, Staging, Production. Default is Development."
+        },
+        "VpcCidrBlock": {
+            "Description": "The overall CIDR block used to create the VPC.",
+            "Type": "String",
+            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$"
+
+        }
+    },
+    "Resources": {
+        "VPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": {
+                    "Ref": "VpcCidrBlock"
+                },
+                "EnableDnsSupport": true,
+                "EnableDnsHostnames": true,
+                "InstanceTenancy": "default",
+                "Tags": [
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "RouteTable": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": [
+                                "${AWS::AccountId}-${AWS::Region}-${CIDR}",
+                                {
+                                    "CIDR":  {
+                                        "Fn::GetAtt": [
+                                            "VPC",
+                                            "CidrBlock"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "VpcId": {
+            "Description": "The ID of the VPC.",
+            "Value": {
+                "Ref": "VPC"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::AccountId}-VpcId"
+                }
+            }
+        },
+        "VpcCidrBlock": {
+            "Description": "The VPC CIDR block.",
+            "Value": {
+                "Fn::GetAtt": [
+                    "VPC",
+                    "CidrBlock"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::AccountId}-VpcCidrBlock"
+                }
+            }
+        },
+        "VpcRouteTable": {
+            "Description": "The ID of the Route Table.",
+            "Value": {
+                "Ref": "RouteTable"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::AccountId}-RouteTable"
+                }
+            }
+        }
+    }
+}
