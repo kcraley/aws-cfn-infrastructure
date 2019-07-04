@@ -101,6 +101,60 @@
                 "TemplateURL": "",
                 "TimeoutInMinutes": 5
             }
+        },
+        "PublicSubnet1": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
+        },
+        "PublicSubnet2": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
+        },
+        "PublicSubnet3": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
+        },
+        "PrivateSubnet1": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
+        },
+        "PrivateSubnet2": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
+        },
+        "PrivateSubnet3": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "NotificationARNs": [ "" ],
+                "Parameters": {},
+                "TemplateURL": "",
+                "TimeoutInMinutes": 5
+            }
         }
     },
     "Outputs": {}
