@@ -90,9 +90,16 @@
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "NotificationARNs": [ "" ],
-                "Parameters": {  },
+                "Parameters": {
+                    "Environment": {
+                        "Ref": "Environment"
+                    },
+                    "VpcCidrBlock": {
+                        "Ref": "VpcCidrBlock"
+                    }
+                 },
                 "TemplateURL": "",
-                "TimeoutInMinutes": ""
+                "TimeoutInMinutes": 5
             }
         }
     },
