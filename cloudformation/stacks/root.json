@@ -85,6 +85,16 @@
         }
     },
     "Mappings": {},
+    "Conditions": {
+        "CreateProdResources": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Environment"
+                },
+                "Production"
+            ]
+        }
+    },
     "Resources": {
         "VPC": {
             "Type": "AWS::CloudFormation::Stack",
@@ -104,6 +114,7 @@
         },
         "PublicSubnet1": {
             "Type": "AWS::CloudFormation::Stack",
+            "Condition": "CreateProdResources",
             "Properties": {
                 "NotificationARNs": [ "" ],
                 "Parameters": {},
@@ -113,6 +124,7 @@
         },
         "PublicSubnet2": {
             "Type": "AWS::CloudFormation::Stack",
+            "Condition": "CreateProdResources",
             "Properties": {
                 "NotificationARNs": [ "" ],
                 "Parameters": {},
@@ -122,6 +134,7 @@
         },
         "PublicSubnet3": {
             "Type": "AWS::CloudFormation::Stack",
+            "Condition": "CreateProdResources",
             "Properties": {
                 "NotificationARNs": [ "" ],
                 "Parameters": {},
