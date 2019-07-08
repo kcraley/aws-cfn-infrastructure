@@ -1,0 +1,42 @@
+[
+    {
+        "ParameterKey": "VpcCidrBlock",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PublicCidrBlock1",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PublicCidrBlock2",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PublicCidrBlock3",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PrivateCidrBlock1",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PrivateCidrBlock2",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "PrivateCidrBlock3",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "DatabaseCidrBlock1",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "DatabaseCidrBlock2",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "DatabaseCidrBlock3",
+        "ParameterValue": ""
+    }
+]
